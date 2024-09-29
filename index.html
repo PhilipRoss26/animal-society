@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Adoption</title>
+</head>
+<body>
+    <h1>Dog Adoption Center</h1>
+
+    <label for="minAge">Please enter the minimum age for the dog:</label>
+    <input id="minAge" placeholder="Enter Dog Age">
+    <button onclick="showOlderDogs()">Find Dogs</button>
+
+    <h2>Dogs older than the entered age:</h2>
+    <p id="dogList"></p>
+
+    <script>
+        const allDogs = [
+            { dogName: "Anthony", breed: "Terrier, Pit Bull/Mix", age: 6 },
+            { dogName: "Axel", breed: "Terrier, American Pit Bull/Mix", age: 2 },
+            { dogName: "Baluna", breed: "Terrier, Pit Bull/Mix", age: 0.5 },
+            { dogName: "Barry", breed: "Australian Cattle Dog/Mix", age: 0.8 },
+            { dogName: "Beanie", breed: "Terrier, American Pit Bull/Hound", age: 2 },
+            { dogName: "Bebe", breed: "Terrier, American Pit Bull/Mix", age: 6 },
+            { dogName: "Boo Boo", breed: "American Eskimo/Mix", age: 9 },
+            { dogName: "Bowser", breed: "Mastiff/Mix", age: 3 },
+            { dogName: "Brutus Xavier", breed: "Terrier, American Pit Bull/Mix", age: 5 },
+            { dogName: "Butterball", breed: "Bulldog, American/Mix", age: 4 }
+        ];
+
+        function showOlderDogs() {
+            const minAge = document.getElementById("minAge").value;
+            const selectedDogs = [];
+
+            allDogs.forEach(function(dog) {
+                if (dog.age > minAge) {
+                    selectedDogs.push(dog);
+                }
+            });
+
+            let output = "";
+            selectedDogs.forEach(function(dog) {
+                output += dog.dogName + " (" + dog.breed + ") - " + dog.age + " years old<br>";
+            });
+
+            document.getElementById("dogList").innerHTML = output;
+        }
+    </script>
+</body>
+</html>
